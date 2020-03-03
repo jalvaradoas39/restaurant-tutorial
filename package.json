@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Tutorial for restaurant site using MERN stack",
   "main": "server.js",
+  "engines": {
+    "node": "12.14.0",
+    "npm": "6.13.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
