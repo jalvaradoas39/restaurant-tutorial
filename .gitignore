@@ -1,4 +1,4 @@
 /node_modules
-/database/db.js
+db.js
 dev.js
 
