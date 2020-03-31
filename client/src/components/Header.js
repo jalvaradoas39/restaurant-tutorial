@@ -5,7 +5,7 @@ const Header = () => {
     // views
     const showNavigation = () => (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <Link to='#' className='navbar-brand'>
+            <Link to='/' className='navbar-brand'>
                 Logo
             </Link>
             <button
@@ -23,12 +23,17 @@ const Header = () => {
             <div className='collapse navbar-collapse' id='navbarTogglerDemo02'>
                 <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
                     <li className='nav-item'>
-                        <Link to='#' className='nav-link'>
+                        <Link to='/' className='nav-link'>
+                            Home
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/signup' className='nav-link'>
                             Signup
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='#' className='nav-link'>
+                        <Link to='/signin' className='nav-link'>
                             Signin
                         </Link>
                     </li>
