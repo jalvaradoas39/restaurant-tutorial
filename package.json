@@ -1,21 +1,24 @@
 {
-  "name": "restaurant-tutorial",
-  "version": "1.0.0",
-  "description": "Tutorial for restaurant site using MERN stack",
-  "main": "server.js",
-  "engines": {
-    "node": "12.14.0",
-    "npm": "6.13.4"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "start-server": "nodemon server.js"
-  },
-  "author": "Jorge Alvarado",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.9.5",
-    "nodemon": "^2.0.2"
-  }
+    "name": "restaurant-tutorial",
+    "version": "1.0.0",
+    "description": "Tutorial for restaurant site using MERN stack",
+    "main": "server.js",
+    "engines": {
+        "node": "12.14.0",
+        "npm": "6.13.4"
+    },
+    "scripts": {
+        "start": "node server.js",
+        "start-server": "nodemon server.js"
+    },
+    "author": "Jorge Alvarado",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^5.9.5",
+        "nodemon": "^2.0.2"
+    },
+    "devDependencies": {
+        "minimist": "^1.2.5"
+    }
 }
