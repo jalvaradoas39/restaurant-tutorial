@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import isEmpty from 'validator/lib/isEmpty';
+import isEmail from 'validator/lib/isEmail';
+import equals from 'validator/lib/equals';
+import { showErrorMsg, showSuccessMsg } from '../helpers/message';
+import { showLoading } from '../helpers/loading';
 import { Link } from 'react-router-dom';
 import './Signup.css';
 
@@ -10,7 +15,7 @@ const Signup = () => {
         password2: '',
         successMsg: false,
         errorMsg: false,
-        loading: false,
+        loading: true,
     });
     const {
         username,
@@ -29,20 +34,49 @@ const Signup = () => {
         setFormData({
             ...formData,
             [evt.target.name]: evt.target.value,
+            successMsg: '',
+            errorMsg: '',
         });
     };
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
-        //console.log(formData);
+        // client-side validation
+        if (
+            isEmpty(username) ||
+            isEmpty(email) ||
+            isEmpty(password) ||
+            isEmpty(password2)
+        ) {
+            setFormData({
+                ...formData,
+                errorMsg: 'All fields are required',
+            });
+        } else if (!isEmail(email)) {
+            setFormData({
+                ...formData,
+                errorMsg: 'Invalid email',
+            });
+        } else if (!equals(password, password2)) {
+            setFormData({
+                ...formData,
+                errorMsg: 'Passwords do not match',
+            });
+        } else {
+            // SUCCESS
+            setFormData({
+                ...formData,
+                successMsg: 'Validation success',
+            });
+        }
     };
 
     /****************************
      * VIEWS
      ***************************/
     const showSignupForm = () => (
-        <form className='signup-form' onSubmit={handleSubmit}>
+        <form className='signup-form' onSubmit={handleSubmit} noValidate>
             {/* username */}
             <div className='form-group input-group'>
                 <div className='input-group-prepend'>
@@ -127,8 +161,13 @@ const Signup = () => {
         <div className='signup-container'>
             <div className='row px-3 vh-100'>
                 <div className='col-md-5 mx-auto align-self-center'>
+                    {successMsg && showSuccessMsg(successMsg)}
+                    {errorMsg && showErrorMsg(errorMsg)}
+                    {loading && (
+                        <div className='text-center pb-4'>{showLoading()}</div>
+                    )}
                     {showSignupForm()}
-                    <p style={{ color: 'white' }}>{JSON.stringify(formData)}</p>
+                    {/* <p style={{ color: 'white' }}>{JSON.stringify(formData)}</p> */}
                 </div>
             </div>
         </div>
