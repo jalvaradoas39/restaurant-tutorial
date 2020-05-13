@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
+import isEmpty from 'validator/lib/isEmpty';
+import isEmail from 'validator/lib/isEmail';
+import { signin } from '../api/auth';
 
 const Signin = () => {
     const [formData, setFormData] = useState({
@@ -33,6 +36,26 @@ const Signin = () => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
+
+        // client-side validation
+        if (isEmpty(email) || isEmpty(password)) {
+            setFormData({
+                ...formData,
+                errorMsg: 'All fields are required',
+            });
+        } else if (!isEmail(email)) {
+            setFormData({
+                ...formData,
+                errorMsg: 'Invalid email',
+            });
+        } else {
+            const { email, password } = formData;
+            const data = { email, password };
+
+            setFormData({ ...formData, loading: true });
+
+            signin(data);
+        }
     };
 
     /****************************
