@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
-import { setAuthentication } from '../helpers/auth';
+import { setAuthentication, isAuthenticated } from '../helpers/auth';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { signin } from '../api/auth';
@@ -13,16 +13,9 @@ const Signin = () => {
         password: 'abc123',
         errorMsg: false,
         loading: false,
-        redirectToDashboard: false,
     });
 
-    const {
-        email,
-        password,
-        errorMsg,
-        loading,
-        redirectToDashboard,
-    } = formData;
+    const { email, password, errorMsg, loading } = formData;
 
     /****************************
      * EVENT HANDLERS
@@ -58,6 +51,12 @@ const Signin = () => {
             signin(data)
                 .then((response) => {
                     setAuthentication(response.data.token, response.data.user);
+
+                    if (isAuthenticated() && isAuthenticated().role === 1) {
+                        console.log('Redirecting to admin dashboard');
+                    } else {
+                        console.log('Redirecting to user dashboard');
+                    }
                 })
                 .catch((err) => {
                     console.log('signin api function error: ', err);
