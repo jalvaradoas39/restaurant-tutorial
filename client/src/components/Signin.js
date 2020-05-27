@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
+import { setAuthentication } from '../helpers/auth';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { signin } from '../api/auth';
@@ -54,7 +55,13 @@ const Signin = () => {
 
             setFormData({ ...formData, loading: true });
 
-            signin(data);
+            signin(data)
+                .then((response) => {
+                    setAuthentication(response.data.token, response.data.user);
+                })
+                .catch((err) => {
+                    console.log('signin api function error: ', err);
+                });
         }
     };
 
