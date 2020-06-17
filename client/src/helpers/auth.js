@@ -1,5 +1,9 @@
-import { setCookie, getCookie } from './cookies';
-import { setLocalStorage, getLocalStorage } from './localStorage';
+import { setCookie, getCookie, deleteCookie } from './cookies';
+import {
+    setLocalStorage,
+    getLocalStorage,
+    deleteLocalStorage,
+} from './localStorage';
 
 export const setAuthentication = (token, user) => {
     setCookie('token', token);
@@ -12,4 +16,11 @@ export const isAuthenticated = () => {
     } else {
         return false;
     }
+};
+
+export const logout = (next) => {
+    deleteCookie('token');
+    deleteLocalStorage('user');
+
+    next();
 };
