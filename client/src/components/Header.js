@@ -33,16 +33,17 @@ const Header = ({ history }) => {
                         <Fragment>
                             <li className='nav-item'>
                                 <Link to='/' className='nav-link'>
-                                    Home
+                                    <i className='fas fa-home'></i> Home
                                 </Link>
                             </li>
                             <li className='nav-item'>
                                 <Link to='/signup' className='nav-link'>
-                                    Signup
+                                    <i className='fas fa-edit'></i> Signup
                                 </Link>
                             </li>
                             <li className='nav-item'>
                                 <Link to='/signin' className='nav-link'>
+                                    <i className='fas fa-sign-in-alt'></i>{' '}
                                     Signin
                                 </Link>
                             </li>
@@ -53,7 +54,7 @@ const Header = ({ history }) => {
                         <Fragment>
                             <li className='nav-item'>
                                 <Link to='/user/dashboard' className='nav-link'>
-                                    Dashboard
+                                    <i className='fas fa-home'></i> Dashboard
                                 </Link>
                             </li>
                         </Fragment>
@@ -66,7 +67,7 @@ const Header = ({ history }) => {
                                     to='/admin/dashboard'
                                     className='nav-link'
                                 >
-                                    Dashboard
+                                    <i className='fas fa-home'></i> Dashboard
                                 </Link>
                             </li>
                         </Fragment>
@@ -79,6 +80,7 @@ const Header = ({ history }) => {
                                     className='btn btn-link text-secondary text-decoration-none pl-0'
                                     onClick={handleLogout}
                                 >
+                                    <i className='fas fa-sign-out-alt'></i>{' '}
                                     Logout
                                 </button>
                             </li>
