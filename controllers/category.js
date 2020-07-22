@@ -1,4 +1,5 @@
-exports.categoryController = (req, res) => {
+exports.create = (req, res) => {
+    console.log(req.user);
     setTimeout(() => {
         res.json({
             successMessage: `${req.body.category} was created!`,
