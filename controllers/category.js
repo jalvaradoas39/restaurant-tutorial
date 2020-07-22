@@ -1,3 +1,7 @@
 exports.categoryController = (req, res) => {
-    console.log('Inside categoryController');
+    setTimeout(() => {
+        res.json({
+            successMessage: `${req.body.category} was created!`,
+        });
+    }, 5000);
 };

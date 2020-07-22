@@ -1,21 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { createCategory } from '../api/category';
+import isEmpty from 'validator/lib/isEmpty';
+import { showErrorMsg, showSuccessMsg } from '../helpers/message';
+import { showLoading } from '../helpers/loading';
 
 const AdminDashboard = () => {
     const [category, setCategory] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
+    const [loading, setLoading] = useState(false);
 
     /****************************
      * EVENT HANDLERS
      ***************************/
+    const handleMessages = (evt) => {
+        setErrorMsg('');
+        setSuccessMsg('');
+    };
+
     const handleCategoryChange = (evt) => {
+        setErrorMsg('');
+        setSuccessMsg('');
         setCategory(evt.target.value);
     };
 
     const handleCategorySubmit = (evt) => {
         evt.preventDefault();
-        const data = { category };
 
-        createCategory(data);
+        if (isEmpty(category)) {
+            setErrorMsg('Please enter a category');
+        } else {
+            const data = { category };
+
+            setLoading(true);
+            createCategory(data)
+                .then((response) => {
+                    setLoading(false);
+                    setSuccessMsg(response.data.successMessage);
+                })
+                .catch((err) => {
+                    setLoading(false);
+                    setErrorMsg(err.response.data.errorMessage);
+                });
+        }
     };
 
     /****************************
@@ -69,7 +96,7 @@ const AdminDashboard = () => {
     );
 
     const showCategoryModal = () => (
-        <div id='addCategoryModal' className='modal'>
+        <div id='addCategoryModal' className='modal' onClick={handleMessages}>
             <div className='modal-dialog modal-dialog-centered modal-lg'>
                 <div className='modal-content'>
                     <form onSubmit={handleCategorySubmit}>
@@ -82,14 +109,27 @@ const AdminDashboard = () => {
                             </button>
                         </div>
                         <div className='modal-body my-2'>
-                            <label className='text-secondary'>Category</label>
-                            <input
-                                type='text'
-                                className='form-control'
-                                name='category'
-                                value={category}
-                                onChange={handleCategoryChange}
-                            />
+                            {errorMsg && showErrorMsg(errorMsg)}
+                            {successMsg && showSuccessMsg(successMsg)}
+
+                            {loading ? (
+                                <div className='text-center'>
+                                    {showLoading()}
+                                </div>
+                            ) : (
+                                <Fragment>
+                                    <label className='text-secondary'>
+                                        Category
+                                    </label>
+                                    <input
+                                        type='text'
+                                        className='form-control'
+                                        name='category'
+                                        value={category}
+                                        onChange={handleCategoryChange}
+                                    />
+                                </Fragment>
+                            )}
                         </div>
                         <div className='modal-footer'>
                             <button
