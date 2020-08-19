@@ -78,7 +78,11 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className='col-md-4 my-1'>
-                        <button className='btn btn-outline-warning btn-block'>
+                        <button
+                            className='btn btn-outline-warning btn-block'
+                            data-toggle='modal'
+                            data-target='#addFoodModal'
+                        >
                             <i className='fas fa-plus'> Add Food</i>
                         </button>
                     </div>
@@ -149,6 +153,50 @@ const AdminDashboard = () => {
         </div>
     );
 
+    const showFoodModal = () => (
+        <div id='addFoodModal' className='modal' onClick={handleMessages}>
+            <div className='modal-dialog modal-dialog-centered modal-lg'>
+                <div className='modal-content'>
+                    <form onSubmit={handleCategorySubmit}>
+                        <div className='modal-header bg-warning text-white'>
+                            <h5 className='modal-title'>Add Food</h5>
+                            <button className='close' data-dismiss='modal'>
+                                <span>
+                                    <i className='fas fa-times'></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div className='modal-body my-2'>
+                            {errorMsg && showErrorMsg(errorMsg)}
+                            {successMsg && showSuccessMsg(successMsg)}
+
+                            {loading ? (
+                                <div className='text-center'>
+                                    {showLoading()}
+                                </div>
+                            ) : (
+                                <Fragment></Fragment>
+                            )}
+                        </div>
+                        <div className='modal-footer'>
+                            <button
+                                className='btn btn-secondary'
+                                data-dismiss='modal'
+                            >
+                                Close
+                            </button>
+                            <button
+                                type='submit'
+                                className='btn btn-warning text-white'
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
     /****************************
      * RENDERER
      ***************************/
@@ -157,6 +205,7 @@ const AdminDashboard = () => {
             {showHeader()}
             {showActionBtns()}
             {showCategoryModal()}
+            {showFoodModal()}
         </section>
     );
 };
