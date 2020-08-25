@@ -175,7 +175,73 @@ const AdminDashboard = () => {
                                     {showLoading()}
                                 </div>
                             ) : (
-                                <Fragment></Fragment>
+                                <Fragment>
+                                    <div className='custom-file mb-2'>
+                                        <input
+                                            type='file'
+                                            className='custom-file-input'
+                                        />
+                                        <label className='custom-file-label'>
+                                            Choose File
+                                        </label>
+                                    </div>
+
+                                    <div className='form-group'>
+                                        <label className='text-secondary'>
+                                            Name
+                                        </label>
+                                        <input
+                                            type='text'
+                                            className='form-control'
+                                        />
+                                    </div>
+
+                                    <div className='form-group'>
+                                        <label className='text-secondary'>
+                                            Description
+                                        </label>
+                                        <textarea
+                                            className='form-control'
+                                            rows='3'
+                                        ></textarea>
+                                    </div>
+
+                                    <div className='form-group'>
+                                        <label className='text-secondary'>
+                                            Price
+                                        </label>
+                                        <input
+                                            type='text'
+                                            className='form-control'
+                                        />
+                                    </div>
+
+                                    <div className='form-row'>
+                                        <div className='form-group col-md-6'>
+                                            <label className='text-secondary'>
+                                                Category
+                                            </label>
+                                            <select className='custom-select mr-sm-2'>
+                                                <option>Choose one...</option>
+                                                <option>Pasta</option>
+                                                <option>Desserts</option>
+                                                <option>Drinks</option>
+                                            </select>
+                                        </div>
+
+                                        <div className='form-group col-md-6'>
+                                            <label className='text-secondary'>
+                                                Quantity
+                                            </label>
+                                            <input
+                                                type='number'
+                                                className='form-control'
+                                                min='0'
+                                                max='1000'
+                                            />
+                                        </div>
+                                    </div>
+                                </Fragment>
                             )}
                         </div>
                         <div className='modal-footer'>
