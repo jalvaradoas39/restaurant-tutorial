@@ -16,10 +16,16 @@ const AdminDashboard = () => {
      ***************************/
     useEffect(() => {
         loadCategories();
-    }, []);
+    }, [loading]);
 
     const loadCategories = async () => {
-        await getCategories();
+        await getCategories()
+            .then((response) => {
+                setCategories(response.data.categories);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     /****************************
@@ -235,9 +241,15 @@ const AdminDashboard = () => {
                                             </label>
                                             <select className='custom-select mr-sm-2'>
                                                 <option>Choose one...</option>
-                                                <option>Pasta</option>
-                                                <option>Desserts</option>
-                                                <option>Drinks</option>
+                                                {categories &&
+                                                    categories.map((c) => (
+                                                        <option
+                                                            key={c._id}
+                                                            value={c._id}
+                                                        >
+                                                            {c.category}
+                                                        </option>
+                                                    ))}
                                             </select>
                                         </div>
 
