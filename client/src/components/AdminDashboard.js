@@ -380,7 +380,6 @@ const AdminDashboard = () => {
      ***************************/
     return (
         <section>
-            {JSON.stringify(productData)}
             {showHeader()}
             {showActionBtns()}
             {showCategoryModal()}
