@@ -1,15 +1,15 @@
 .signup-container {
-    background-image: url('img-signup-bkg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.8;
+	background-image: url('/images/img-signup-bkg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.8;
 }
 
 .signin-container {
-    background-image: url('img-signin-bkg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.8;
+	background-image: url('/images/img-signin-bkg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.8;
 }
