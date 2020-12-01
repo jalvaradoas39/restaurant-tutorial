@@ -41,6 +41,7 @@ const AdminCategoryModal = () => {
 		} else {
 			const data = { category };
 			dispatch(createCategory(data));
+			setCategory('');
 		}
 	};
 
