@@ -1,38 +1,38 @@
 {
-    "name": "restaurant-tutorial",
-    "version": "1.0.0",
-    "description": "Tutorial for restaurant site using MERN stack",
-    "main": "server.js",
-    "engines": {
-        "node": "12.14.0",
-        "npm": "6.13.4"
-    },
-    "scripts": {
-        "start": "node server.js",
-        "start-server": "nodemon server.js",
-        "start-client": "npm start --prefix client",
-        "dev": "concurrently \"npm run start-server\" \"npm run start-client\""
-    },
-    "author": "Jorge Alvarado",
-    "license": "MIT",
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "cookie-parser": "^1.4.5",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "express-validator": "^6.7.0",
-        "jsonwebtoken": "^8.5.1",
-        "mongoose": "^5.10.16",
-        "multer": "^1.4.2",
-        "nodemon": "^2.0.6",
-        "react-redux": "^7.2.2",
-        "redux": "^4.0.5",
-        "redux-devtools-extension": "^2.13.8",
-        "redux-thunk": "^2.3.0"
-    },
-    "devDependencies": {
-        "concurrently": "^5.3.0",
-        "minimist": "^1.2.5",
-        "morgan": "^1.10.0"
-    }
+	"name": "restaurant-tutorial",
+	"version": "1.0.0",
+	"description": "Tutorial for restaurant site using MERN stack",
+	"main": "server.js",
+	"engines": {
+		"node": "12.14.0",
+		"npm": "6.13.4"
+	},
+	"scripts": {
+		"start": "node server.js",
+		"start-server": "nodemon server.js --ignore './client/'",
+		"start-client": "npm start --prefix client",
+		"dev": "concurrently \"npm run start-server\" \"npm run start-client\""
+	},
+	"author": "Jorge Alvarado",
+	"license": "MIT",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-validator": "^6.7.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.10.16",
+		"multer": "^1.4.2",
+		"nodemon": "^2.0.6",
+		"react-redux": "^7.2.2",
+		"redux": "^4.0.5",
+		"redux-devtools-extension": "^2.13.8",
+		"redux-thunk": "^2.3.0"
+	},
+	"devDependencies": {
+		"concurrently": "^5.3.0",
+		"minimist": "^1.2.5",
+		"morgan": "^1.10.0"
+	}
 }
