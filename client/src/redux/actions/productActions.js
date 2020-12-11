@@ -4,7 +4,7 @@ import {
 	SHOW_ERROR_MESSAGE,
 	SHOW_SUCCESS_MESSAGE,
 } from '../constants/messageConstants';
-import { GET_PRODUCTS } from '../constants/productConstants';
+import { CREATE_PRODUCT, GET_PRODUCTS } from '../constants/productConstants';
 
 export const createProduct = formData => async dispatch => {
 	try {
@@ -14,6 +14,10 @@ export const createProduct = formData => async dispatch => {
 		dispatch({
 			type: SHOW_SUCCESS_MESSAGE,
 			payload: response.data.successMessage,
+		});
+		dispatch({
+			type: CREATE_PRODUCT,
+			payload: response.data.product,
 		});
 	} catch (err) {
 		console.log('createProduct api error: ', err);
