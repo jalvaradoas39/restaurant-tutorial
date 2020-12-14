@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 // redux
 import { useSelector } from 'react-redux';
 
@@ -10,7 +11,7 @@ const AdminBody = () => {
 			<div className='row'>
 				<div className='card-deck'>
 					{products.map(product => (
-						<div className='card'>{product.productName}</div>
+						<Card key={product._id} product={product} />
 					))}
 				</div>
 			</div>
