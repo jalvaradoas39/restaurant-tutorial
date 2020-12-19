@@ -48,3 +48,19 @@ exports.readAll = async (req, res) => {
 		});
 	}
 };
+
+exports.delete = async (req, res) => {
+	try {
+		const productId = req.params.productId;
+		const deletedProduct = await Product.findByIdAndDelete(productId);
+
+		res.json({
+			product: deletedProduct,
+		});
+	} catch (err) {
+		console.log(err, 'productController.delete error');
+		res.status(500).json({
+			errorMessage: 'Please try again later',
+		});
+	}
+};
