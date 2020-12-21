@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const fs = require('fs');
 
 exports.create = async (req, res) => {
 	const { filename } = req.file;
@@ -53,6 +54,13 @@ exports.delete = async (req, res) => {
 	try {
 		const productId = req.params.productId;
 		const deletedProduct = await Product.findByIdAndDelete(productId);
+
+		console.log(deletedProduct);
+		// delete image from filesystem
+		fs.unlink(`uploads/${deletedProduct.fileName}`, err => {
+			if (err) throw err;
+			console.log('image was deleted: ', deletedProduct.fileName);
+		});
 
 		res.json({
 			product: deletedProduct,
