@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // redux
 import { useDispatch } from 'react-redux';
 import { deleteProduct } from '../redux/actions/productActions';
@@ -33,13 +34,14 @@ const Card = ({ product }) => {
 							? product.productDesc.substring(0, 60) + '...'
 							: product.productDesc.substring(0, 60)}
 					</p>
-					<button
+					<Link
+						to={`/admin/edit/product/${product._id}`}
 						type='button'
 						className='btn btn-secondary btn-sm mr-1 my-1'
 					>
 						<i className='far fa-edit pr-1'></i>
 						Edit
-					</button>
+					</Link>
 					<button
 						type='button'
 						className='btn btn-danger btn-sm'
