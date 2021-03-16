@@ -12,6 +12,7 @@ router.post(
 );
 
 router.get('/', productController.readAll);
+router.get('/:productId', productController.read);
 router.delete('/:productId', authenticatateJWT, productController.delete);
 
 module.exports = router;
