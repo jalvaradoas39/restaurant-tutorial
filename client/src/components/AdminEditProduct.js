@@ -1,11 +1,12 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import axios from 'axios';
 import AdminHeader from './AdminHeader';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
 import { getCategories } from '../redux/actions/categoryActions';
 
-const AdminEditProduct = ({ match }) => {
+const AdminEditProduct = ({ match, history }) => {
 	/****************************
 	 * PARAMS
 	 ***************************/
@@ -53,8 +54,31 @@ const AdminEditProduct = ({ match }) => {
 		setProductImage(image);
 	};
 
-	const handleProductSubmit = e => {
-		//
+	const handleProductSubmit = async e => {
+		e.preventDefault();
+
+		const formData = new FormData();
+		formData.append('productImage', productImage);
+		formData.append('productName', productName);
+		formData.append('productDesc', productDesc);
+		formData.append('productPrice', productPrice);
+		formData.append('productCategory', productCategory);
+		formData.append('productQty', productQty);
+
+		const config = {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		};
+
+		await axios
+			.put(`/api/product/${productId}`, formData, config)
+			.then(res => {
+				history.push('/admin/dashboard');
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
 	/****************************
