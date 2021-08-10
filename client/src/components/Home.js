@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Home = () => {
-	return <p>Inside Home component</p>;
+	return (
+		<section className='home-page'>
+			<div className='banner-image'></div>
+		</section>
+	);
 };
 
 export default Home;
