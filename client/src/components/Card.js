@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProduct } from '../redux/actions/productActions';
 
-const Card = ({ product }) => {
+const Card = ({ product, adminPage = false, homePage = false }) => {
 	const dispatch = useDispatch();
 
 	return (
@@ -34,22 +34,48 @@ const Card = ({ product }) => {
 							? product.productDesc.substring(0, 60) + '...'
 							: product.productDesc.substring(0, 60)}
 					</p>
-					<Link
-						to={`/admin/edit/product/${product._id}`}
-						type='button'
-						className='btn btn-secondary btn-sm mr-1 my-1'
-					>
-						<i className='far fa-edit pr-1'></i>
-						Edit
-					</Link>
-					<button
-						type='button'
-						className='btn btn-danger btn-sm'
-						onClick={() => dispatch(deleteProduct(product._id))}
-					>
-						<i className='far fa-trash-alt pr-1'></i>
-						Delete
-					</button>
+					{adminPage && (
+						<>
+							<Link
+								to={`/admin/edit/product/${product._id}`}
+								type='button'
+								className='btn btn-secondary btn-sm mr-1 my-1'
+							>
+								<i className='far fa-edit pr-1'></i>
+								Edit
+							</Link>
+							<button
+								type='button'
+								className='btn btn-danger btn-sm'
+								onClick={() =>
+									dispatch(deleteProduct(product._id))
+								}
+							>
+								<i className='far fa-trash-alt pr-1'></i>
+								Delete
+							</button>
+						</>
+					)}
+
+					{homePage && (
+						<>
+							<Link
+								to={'#'}
+								type='button'
+								className='btn btn-primary btn-sm mr-1 my-1'
+							>
+								<i className='far fa-edit pr-1'></i>
+								View Product
+							</Link>
+							<button
+								type='button'
+								className='btn btn-warning btn-sm'
+							>
+								<i className='far fa-trash-alt pr-1'></i>
+								Add to Cart
+							</button>
+						</>
+					)}
 				</div>
 			</div>
 		</div>

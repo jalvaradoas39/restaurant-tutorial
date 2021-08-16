@@ -1,0 +1,1 @@
+export const GET_NEW_ARRIVALS = 'GET_NEW_ARRIVALS';
