@@ -64,14 +64,12 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
 								type='button'
 								className='btn btn-primary btn-sm mr-1 my-1'
 							>
-								<i className='far fa-edit pr-1'></i>
 								View Product
 							</Link>
 							<button
 								type='button'
 								className='btn btn-warning btn-sm'
 							>
-								<i className='far fa-trash-alt pr-1'></i>
 								Add to Cart
 							</button>
 						</>

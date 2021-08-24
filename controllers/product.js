@@ -36,10 +36,9 @@ exports.create = async (req, res) => {
 
 exports.readAll = async (req, res) => {
 	try {
-		const products = await Product.find({}).populate(
-			'productCategory',
-			'category'
-		);
+		const products = await Product.find({})
+			.populate('productCategory', 'category')
+			.limit(6);
 
 		res.json({ products });
 	} catch (err) {
