@@ -12,6 +12,7 @@ router.post(
 );
 
 router.get('/', productController.readAll);
+router.get('/count', productController.readByCount);
 router.get('/:productId', productController.read);
 router.put(
 	'/:productId',

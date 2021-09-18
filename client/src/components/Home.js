@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { showLoading } from '../helpers/loading';
 import Card from './Card';
 import { getNewArrivals } from '../redux/actions/filterActions';
-import { getProducts } from '../redux/actions/productActions';
+import { getProductsByCount } from '../redux/actions/productActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
 	}, [dispatch]);
 
 	useEffect(() => {
-		dispatch(getProducts());
+		dispatch(getProductsByCount());
 	}, [dispatch]);
 
 	const { newArrivals } = useSelector(state => state.filters);
