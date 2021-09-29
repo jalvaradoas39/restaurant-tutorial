@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../redux/actions/productActions';
 import { getCategories } from '../redux/actions/categoryActions';
+import { getProductsByFilter } from '../redux/actions/filterActions';
 import Card from './Card';
 
 const Shop = () => {
+	const [text, setText] = useState('');
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -17,6 +20,12 @@ const Shop = () => {
 
 	const { products } = useSelector(state => state.products);
 	const { categories } = useSelector(state => state.categories);
+
+	const handleSearch = e => {
+		setText(e.target.value);
+
+		dispatch(getProductsByFilter({ type: 'text', query: e.target.value }));
+	};
 
 	return (
 		<section className='shop-page m-4'>
@@ -36,10 +45,14 @@ const Shop = () => {
 								type='search'
 								placeholder='Search'
 								aria-label='Search'
+								name='search'
+								value={text}
+								onChange={handleSearch}
 							/>
 							<button
 								className='btn btn-outline-success my-2 my-sm-0'
 								type='submit'
+								disabled={true}
 							>
 								Search
 							</button>
