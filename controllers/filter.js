@@ -30,6 +30,9 @@ exports.searchByQueryType = async (req, res) => {
 			case 'text':
 				products = await Product.find({ $text: { $search: query } });
 				break;
+			case 'category':
+				products = await Product.find({ productCategory: query });
+				break;
 		}
 
 		if (!products.length > 0) {

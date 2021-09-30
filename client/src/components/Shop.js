@@ -7,6 +7,7 @@ import Card from './Card';
 
 const Shop = () => {
 	const [text, setText] = useState('');
+	const [categoryIds, setCategoryIds] = useState([]);
 
 	const dispatch = useDispatch();
 
@@ -22,9 +23,40 @@ const Shop = () => {
 	const { categories } = useSelector(state => state.categories);
 
 	const handleSearch = e => {
+		resetState();
+
 		setText(e.target.value);
 
 		dispatch(getProductsByFilter({ type: 'text', query: e.target.value }));
+	};
+
+	const handleCategory = e => {
+		resetState();
+
+		const currentCategoryChecked = e.target.value;
+		const allCategoriesChecked = [...categoryIds];
+		const indexFound = allCategoriesChecked.indexOf(currentCategoryChecked);
+
+		let updatedCategoryIds;
+		if (indexFound === -1) {
+			// add
+			updatedCategoryIds = [...categoryIds, currentCategoryChecked];
+			setCategoryIds(updatedCategoryIds);
+		} else {
+			// remove
+			updatedCategoryIds = [...categoryIds];
+			updatedCategoryIds.splice(indexFound, 1);
+			setCategoryIds(updatedCategoryIds);
+		}
+
+		dispatch(
+			getProductsByFilter({ type: 'category', query: updatedCategoryIds })
+		);
+	};
+
+	const resetState = () => {
+		setText('');
+		setCategoryIds([]);
 	};
 
 	return (
@@ -66,8 +98,11 @@ const Shop = () => {
 									<input
 										className='form-check-input'
 										type='checkbox'
-										value=''
+										name='category'
+										value={c._id}
 										id='flexCheckChecked'
+										checked={categoryIds.includes(c._id)}
+										onChange={handleCategory}
 									/>
 									<label
 										className='form-check-label'
