@@ -60,7 +60,7 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
 					{homePage && (
 						<>
 							<Link
-								to={'#'}
+								to={`/product/${product._id}`}
 								type='button'
 								className='btn btn-primary btn-sm mr-1 my-1'
 							>
