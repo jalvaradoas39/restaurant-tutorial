@@ -29,6 +29,9 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
 							})}
 						</span>
 					</h6>
+					<p className='text-muted'>
+						{product.productQty <= 0 ? 'Out of Stock' : 'In Stock'}
+					</p>
 					<p>
 						{product.productDesc.length > 60
 							? product.productDesc.substring(0, 60) + '...'
@@ -69,6 +72,7 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
 							<button
 								type='button'
 								className='btn btn-warning btn-sm'
+								disabled={product.productQty <= 0}
 							>
 								Add to Cart
 							</button>
