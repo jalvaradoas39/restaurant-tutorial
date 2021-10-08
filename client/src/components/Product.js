@@ -37,7 +37,11 @@ const Product = ({ match, history }) => {
 					<div className='col-md-5'>
 						<h3 className='mb-4'>{product.productName}</h3>
 						<p className='text-muted border-top py-2'>
-							Price: ${product.productPrice}
+							Price:{' '}
+							{product.productPrice.toLocaleString('en-US', {
+								style: 'currency',
+								currency: 'USD',
+							})}
 						</p>
 						<p className='text-muted border-top py-2'>
 							Status:{' '}
@@ -49,7 +53,7 @@ const Product = ({ match, history }) => {
 							Description: {product.productDesc}
 						</p>
 						<button
-							className='btn btn-dark btn-large btn-block mb-5'
+							className='btn btn-dark btn-large btn-block mb-5 py-2'
 							disabled={product.productQty <= 0}
 						>
 							Add to Cart
