@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { isAuthenticated, logout } from '../helpers/auth';
+import { useSelector } from 'react-redux';
 
 const Header = ({ history }) => {
+	const { cart } = useSelector(state => state.cart);
+
 	const handleLogout = evt => {
 		logout(() => {
 			history.push('/signin');
@@ -39,6 +42,24 @@ const Header = ({ history }) => {
 							<li className='nav-item'>
 								<Link to='/shop' className='nav-link'>
 									<i className='fas fa-shopping-bag'></i> Shop
+								</Link>
+							</li>
+							<li
+								className='nav-item mr-2'
+								style={{ position: 'relative' }}
+							>
+								<Link to='/cart' className='nav-link'>
+									<i className='fas fa-shopping-cart'></i>{' '}
+									Cart{' '}
+									<span
+										className='badge badge-danger'
+										style={{
+											position: 'absolute',
+											top: '0px',
+										}}
+									>
+										{cart.length}
+									</span>
 								</Link>
 							</li>
 							<li className='nav-item'>

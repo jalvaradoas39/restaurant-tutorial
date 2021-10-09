@@ -4,6 +4,7 @@ import './App.css';
 import Header from './Header';
 import Home from './Home';
 import Shop from './Shop';
+import Cart from './Cart';
 import Product from './Product';
 import Signup from './Signup';
 import Signin from './Signin';
@@ -22,6 +23,7 @@ const App = () => {
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/shop' component={Shop} />
+					<Route exact path='/cart' component={Cart} />
 					<Route
 						exact
 						path='/product/:productId'
