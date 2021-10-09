@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
+import { addToCart } from '../redux/actions/cartActions';
 
 const Product = ({ match, history }) => {
 	const { productId } = match.params;
@@ -11,6 +12,10 @@ const Product = ({ match, history }) => {
 	}, [dispatch, productId]);
 
 	const { product } = useSelector(state => state.products);
+
+	const handleAddToCart = () => {
+		dispatch(addToCart(product));
+	};
 
 	const handleGoBackBtn = () => {
 		history.goBack();
@@ -55,6 +60,7 @@ const Product = ({ match, history }) => {
 						<button
 							className='btn btn-dark btn-large btn-block mb-5 py-2'
 							disabled={product.productQty <= 0}
+							onClick={handleAddToCart}
 						>
 							Add to Cart
 						</button>
