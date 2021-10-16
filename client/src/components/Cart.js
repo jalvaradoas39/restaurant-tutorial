@@ -1,12 +1,34 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ADD_TO_CART } from '../redux/constants/cartConstants';
 
 const Cart = ({ history }) => {
 	const { cart } = useSelector(state => state.cart);
 
+	const dispatch = useDispatch();
+
 	const handleGoBackBtn = () => {
 		history.goBack();
+	};
+
+	const handleQtyChange = (e, product) => {
+		const cart = localStorage.getItem('cart')
+			? JSON.parse(localStorage.getItem('cart'))
+			: [];
+
+		cart.forEach(cartItem => {
+			if (cartItem._id === product._id) {
+				cartItem.count = e.target.value;
+			}
+		});
+
+		localStorage.setItem('cart', JSON.stringify(cart));
+
+		dispatch({
+			type: ADD_TO_CART,
+			payload: cart,
+		});
 	};
 
 	return (
@@ -42,7 +64,7 @@ const Cart = ({ history }) => {
 								</thead>
 								<tbody>
 									{cart.map(product => (
-										<tr>
+										<tr key={product._id}>
 											<th scope='row'>
 												{' '}
 												<img
@@ -72,7 +94,20 @@ const Cart = ({ history }) => {
 													}
 												)}
 											</td>
-											<td>{product.count}</td>
+											<td>
+												<input
+													type='number'
+													min='1'
+													max={product.productQty}
+													value={product.count}
+													onChange={e =>
+														handleQtyChange(
+															e,
+															product
+														)
+													}
+												/>
+											</td>
 											<td>
 												{' '}
 												<button
