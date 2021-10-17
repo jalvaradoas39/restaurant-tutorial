@@ -122,8 +122,28 @@ const Cart = ({ history }) => {
 								</tbody>
 							</table>
 						</div>
-						<div className='col-md-4 border-left'>
-							Cart summary goes here
+						<div className='col-md-4 border-left pl-4'>
+							<h2>Cart Summary</h2>
+							<p className='font-weight-light text-muted border-bottom'>
+								{cart.length === 1
+									? '(1) Item'
+									: `(${cart.length}) Items`}
+							</p>
+							<p className='font-weight-bold'>
+								Total: $
+								{cart
+									.reduce(
+										(currentSum, currentCartItem) =>
+											currentSum +
+											currentCartItem.count *
+												currentCartItem.productPrice,
+										0
+									)
+									.toFixed(2)}
+							</p>
+							<button className='btn btn-dark btn-large btn-block mb-5 py-2'>
+								Proceed to Checkout
+							</button>
 						</div>
 					</div>
 				</>
