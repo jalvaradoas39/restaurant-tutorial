@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ADD_TO_CART } from '../redux/constants/cartConstants';
+import { deleteFromCart } from '../redux/actions/cartActions';
 
 const Cart = ({ history }) => {
 	const { cart } = useSelector(state => state.cart);
@@ -113,6 +114,13 @@ const Cart = ({ history }) => {
 												<button
 													type='button'
 													className='btn btn-danger btn-sm'
+													onClick={() =>
+														dispatch(
+															deleteFromCart(
+																product
+															)
+														)
+													}
 												>
 													<i className='far fa-trash-alt pr-1'></i>
 												</button>

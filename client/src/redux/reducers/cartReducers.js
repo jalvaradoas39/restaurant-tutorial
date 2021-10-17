@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../constants/cartConstants';
+import { ADD_TO_CART, DELETE_FROM_CART } from '../constants/cartConstants';
 
 let INITIAL_STATE = {
 	cart: [],
@@ -13,6 +13,10 @@ if (localStorage.getItem('cart')) {
 const cartReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case ADD_TO_CART:
+			return {
+				cart: [...action.payload],
+			};
+		case DELETE_FROM_CART:
 			return {
 				cart: [...action.payload],
 			};
