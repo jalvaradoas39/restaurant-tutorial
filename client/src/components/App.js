@@ -5,6 +5,7 @@ import Header from './Header';
 import Home from './Home';
 import Shop from './Shop';
 import Cart from './Cart';
+import Shipping from './Shipping';
 import Product from './Product';
 import Signup from './Signup';
 import Signin from './Signin';
@@ -29,6 +30,7 @@ const App = () => {
 						path='/product/:productId'
 						component={Product}
 					/>
+					<Route exact path='/shipping' component={Shipping} />
 					<Route exact path='/signup' component={Signup} />
 					<Route exact path='/signin' component={Signin} />
 					<UserRoute

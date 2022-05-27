@@ -80,7 +80,36 @@ const Header = ({ history }) => {
 						<Fragment>
 							<li className='nav-item'>
 								<Link to='/user/dashboard' className='nav-link'>
-									<i className='fas fa-home'></i> Dashboard
+									<i className='fas fa-user-cog'></i>{' '}
+									Dashboard
+								</Link>
+							</li>
+							<li className='nav-item'>
+								<Link to='/' className='nav-link'>
+									<i className='fas fa-home'></i> Home
+								</Link>
+							</li>
+							<li className='nav-item'>
+								<Link to='/shop' className='nav-link'>
+									<i className='fas fa-shopping-bag'></i> Shop
+								</Link>
+							</li>
+							<li
+								className='nav-item mr-2'
+								style={{ position: 'relative' }}
+							>
+								<Link to='/cart' className='nav-link'>
+									<i className='fas fa-shopping-cart'></i>{' '}
+									Cart{' '}
+									<span
+										className='badge badge-danger'
+										style={{
+											position: 'absolute',
+											top: '0px',
+										}}
+									>
+										{cart.length}
+									</span>
 								</Link>
 							</li>
 						</Fragment>
@@ -93,7 +122,8 @@ const Header = ({ history }) => {
 									to='/admin/dashboard'
 									className='nav-link'
 								>
-									<i className='fas fa-home'></i> Dashboard
+									<i className='fas fa-user-cog'></i>{' '}
+									Dashboard
 								</Link>
 							</li>
 						</Fragment>

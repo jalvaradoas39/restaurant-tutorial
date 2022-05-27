@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ADD_TO_CART } from '../redux/constants/cartConstants';
 import { deleteFromCart } from '../redux/actions/cartActions';
+import { isAuthenticated } from '../helpers/auth';
 
 const Cart = ({ history }) => {
 	const { cart } = useSelector(state => state.cart);
@@ -30,6 +31,14 @@ const Cart = ({ history }) => {
 			type: ADD_TO_CART,
 			payload: cart,
 		});
+	};
+
+	const handleCheckout = evt => {
+		if (isAuthenticated()) {
+			history.push('/shipping');
+		} else {
+			history.push('/signin?redirect=shipping');
+		}
 	};
 
 	return (
@@ -149,7 +158,10 @@ const Cart = ({ history }) => {
 									)
 									.toFixed(2)}
 							</p>
-							<button className='btn btn-dark btn-large btn-block mb-5 py-2'>
+							<button
+								className='btn btn-dark btn-large btn-block mb-5 py-2'
+								onClick={handleCheckout}
+							>
 								Proceed to Checkout
 							</button>
 						</div>
