@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { showErrorMsg } from '../helpers/message';
 import { showLoading } from '../helpers/loading';
 import { setAuthentication, isAuthenticated } from '../helpers/auth';
@@ -7,16 +7,18 @@ import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import { signin } from '../api/auth';
 
-const Signin = ({ location }) => {
-	let history = useHistory();
+const Signin = () => {
+	let navigate = useNavigate();
+	let location = useLocation();
+	//console.log('location: ', location);
 
 	useEffect(() => {
 		if (isAuthenticated() && isAuthenticated().role === 1) {
-			history.push('/admin/dashboard');
+			navigate('/admin/dashboard');
 		} else if (isAuthenticated() && isAuthenticated().role === 0) {
-			history.push('/user/dashboard');
+			navigate('/user/dashboard');
 		}
-	}, [history]);
+	}, [navigate]);
 
 	const [formData, setFormData] = useState({
 		email: 'jdoe@gmail.com',
@@ -65,17 +67,17 @@ const Signin = ({ location }) => {
 
 					if (isAuthenticated() && isAuthenticated().role === 1) {
 						console.log('Redirecting to admin dashboard');
-						history.push('/admin/dashboard');
+						navigate('/admin/dashboard');
 					} else if (
 						isAuthenticated() &&
 						isAuthenticated().role === 0 &&
 						!redirect
 					) {
 						console.log('Redirecting to user dashboard');
-						history.push('/user/dashboard');
+						navigate('/user/dashboard');
 					} else {
 						console.log('Redirecting to shipping');
-						history.push('/shipping');
+						navigate('/shipping');
 					}
 				})
 				.catch(err => {

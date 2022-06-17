@@ -1,16 +1,17 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import AdminHeader from './AdminHeader';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
 import { getCategories } from '../redux/actions/categoryActions';
 
-const AdminEditProduct = ({ match, history }) => {
+const AdminEditProduct = () => {
+	let navigate = useNavigate();
 	/****************************
 	 * PARAMS
 	 ***************************/
-	const productId = match.params.productId;
+	let { productId } = useParams();
 
 	/****************************
 	 * REDUX GLOBAL STATE PROPERTIES
@@ -74,7 +75,7 @@ const AdminEditProduct = ({ match, history }) => {
 		await axios
 			.put(`/api/product/${productId}`, formData, config)
 			.then(res => {
-				history.push('/admin/dashboard');
+				navigate('/admin/dashboard');
 			})
 			.catch(err => {
 				console.log(err);

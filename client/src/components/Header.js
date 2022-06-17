@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { isAuthenticated, logout } from '../helpers/auth';
 import { useSelector } from 'react-redux';
 
-const Header = ({ history }) => {
+const Header = () => {
+	const navigate = useNavigate();
 	const { cart } = useSelector(state => state.cart);
 
 	const handleLogout = evt => {
 		logout(() => {
-			history.push('/signin');
+			navigate('/signin');
 		});
 	};
 
@@ -151,4 +152,4 @@ const Header = ({ history }) => {
 	return <header id='header'>{showNavigation()}</header>;
 };
 
-export default withRouter(Header);
+export default Header;

@@ -1,20 +1,13 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { isAuthenticated } from '../helpers/auth';
 
-const AdminRoute = ({ component: Component, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={(props) =>
-                isAuthenticated() && isAuthenticated().role === 1 ? (
-                    <Component {...props} />
-                ) : (
-                    <Redirect to='/signin' />
-                )
-            }
-        />
-    );
+const AdminRoute = () => {
+	return isAuthenticated() && isAuthenticated().role === 1 ? (
+		<Outlet />
+	) : (
+		<Navigate to='/signin' />
+	);
 };
 
 export default AdminRoute;

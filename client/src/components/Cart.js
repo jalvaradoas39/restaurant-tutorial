@@ -1,17 +1,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ADD_TO_CART } from '../redux/constants/cartConstants';
 import { deleteFromCart } from '../redux/actions/cartActions';
 import { isAuthenticated } from '../helpers/auth';
 
-const Cart = ({ history }) => {
+const Cart = () => {
+	let navigate = useNavigate();
 	const { cart } = useSelector(state => state.cart);
 
 	const dispatch = useDispatch();
 
 	const handleGoBackBtn = () => {
-		history.goBack();
+		navigate(-1);
 	};
 
 	const handleQtyChange = (e, product) => {
@@ -35,9 +36,9 @@ const Cart = ({ history }) => {
 
 	const handleCheckout = evt => {
 		if (isAuthenticated()) {
-			history.push('/shipping');
+			navigate('/shipping');
 		} else {
-			history.push('/signin?redirect=shipping');
+			navigate('/signin?redirect=shipping');
 		}
 	};
 
