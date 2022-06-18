@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../redux/actions/productActions';
 import { addToCart } from '../redux/actions/cartActions';
 
 const Product = () => {
-	let navigate = useNavigate();
-	let { productId } = useParams();
+	const navigate = useNavigate();
+	const { productId } = useParams();
 
 	const dispatch = useDispatch();
 

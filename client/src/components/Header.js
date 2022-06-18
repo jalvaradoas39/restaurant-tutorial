@@ -4,7 +4,7 @@ import { isAuthenticated, logout } from '../helpers/auth';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
-	const navigate = useNavigate();
+	let navigate = useNavigate();
 	const { cart } = useSelector(state => state.cart);
 
 	const handleLogout = evt => {

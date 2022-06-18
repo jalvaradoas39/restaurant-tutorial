@@ -10,7 +10,6 @@ import { signin } from '../api/auth';
 const Signin = () => {
 	let navigate = useNavigate();
 	let location = useLocation();
-	//console.log('location: ', location);
 
 	useEffect(() => {
 		if (isAuthenticated() && isAuthenticated().role === 1) {

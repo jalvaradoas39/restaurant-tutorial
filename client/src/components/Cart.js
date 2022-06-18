@@ -5,7 +5,7 @@ import { ADD_TO_CART } from '../redux/constants/cartConstants';
 import { deleteFromCart } from '../redux/actions/cartActions';
 import { isAuthenticated } from '../helpers/auth';
 
-const Cart = () => {
+const Cart = ({ history }) => {
 	let navigate = useNavigate();
 	const { cart } = useSelector(state => state.cart);
 

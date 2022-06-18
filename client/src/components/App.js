@@ -15,7 +15,6 @@ import AdminEditProduct from './AdminEditProduct';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import NotFound from './NotFound';
-// import { isAuthenticated } from '../helpers/auth';
 
 const App = () => {
 	return (
@@ -35,6 +34,7 @@ const App = () => {
 					<Route exact path='/signup' element={<Signup />} />
 					<Route exact path='/signin' element={<Signin />} />
 
+					{/* protected user routes */}
 					<Route element={<UserRoute />}>
 						<Route
 							exact
@@ -43,6 +43,7 @@ const App = () => {
 						/>
 					</Route>
 
+					{/* protected admin routes */}
 					<Route element={<AdminRoute />}>
 						<Route
 							exact
