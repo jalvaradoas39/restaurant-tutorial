@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
+import usaStates from '../data/usaStates';
 
 const Shipping = () => {
+	const [address, setAddress] = useState('');
+	const [address2, setAddress2] = useState('');
+	const [city, setCity] = useState('');
+	const [state, setState] = useState('');
+	const [zip, setZip] = useState('');
+
+	const handleSubmit = evt => {
+		evt.preventDefault();
+
+		const shippingData = {
+			address,
+			address2,
+			city,
+			state,
+			zip,
+		};
+
+		console.log(shippingData);
+	};
+
 	return (
 		<section>
 			<div className='jumbotron p-1'>
@@ -17,10 +38,17 @@ const Shipping = () => {
 							Shipping Details
 						</h6>
 
-						<form>
+						<form onSubmit={handleSubmit}>
 							<div className='form-group'>
 								<label htmlFor='inputAddress'>Address</label>
-								<input type='text' className='form-control' />
+								<input
+									type='text'
+									className='form-control'
+									value={address}
+									onChange={evt =>
+										setAddress(evt.target.value)
+									}
+								/>
 							</div>
 
 							<div className='form-group'>
@@ -29,6 +57,10 @@ const Shipping = () => {
 									type='text'
 									className='form-control'
 									placeholder='Apartment number, suite, unit, etc'
+									value={address2}
+									onChange={evt =>
+										setAddress2(evt.target.value)
+									}
 								/>
 							</div>
 
@@ -38,12 +70,30 @@ const Shipping = () => {
 									<input
 										type='text'
 										className='form-control'
+										value={city}
+										onChange={evt =>
+											setCity(evt.target.value)
+										}
 									/>
 								</div>
 								<div className='form-group col-md-4'>
 									<label htmlFor='inputState'>State</label>
-									<select className='form-control'>
+									<select
+										className='form-control'
+										value={state}
+										onChange={evt =>
+											setState(evt.target.value)
+										}
+									>
 										<option>Choose...</option>
+										{usaStates.map(s => (
+											<option
+												key={s.abbreviation}
+												value={s.abbreviation}
+											>
+												{s.name}
+											</option>
+										))}
 									</select>
 								</div>
 								<div className='form-group col-md-2'>
@@ -51,6 +101,10 @@ const Shipping = () => {
 									<input
 										type='text'
 										className='form-control'
+										value={zip}
+										onChange={evt =>
+											setZip(evt.target.value)
+										}
 									/>
 								</div>
 							</div>
