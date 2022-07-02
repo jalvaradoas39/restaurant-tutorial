@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import usaStates from '../data/usaStates';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { saveShippingAddress } from '../redux/actions/orderActions';
 
 const Shipping = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { shippingAddress } = useSelector(state => state.order);
+
 	const [address, setAddress] = useState('');
 	const [address2, setAddress2] = useState('');
 	const [city, setCity] = useState('');
 	const [state, setState] = useState('');
 	const [zip, setZip] = useState('');
+
+	useEffect(() => {
+		shippingAddress.address
+			? setAddress(shippingAddress.address)
+			: setAddress('');
+		shippingAddress.address2
+			? setAddress2(shippingAddress.address2)
+			: setAddress2('');
+		shippingAddress.city ? setCity(shippingAddress.city) : setCity('');
+		shippingAddress.state ? setState(shippingAddress.state) : setState('');
+		shippingAddress.zip ? setZip(shippingAddress.zip) : setZip('');
+	}, [shippingAddress]);
 
 	const handleSubmit = evt => {
 		evt.preventDefault();
@@ -20,7 +39,8 @@ const Shipping = () => {
 			zip,
 		};
 
-		console.log(shippingData);
+		dispatch(saveShippingAddress(shippingData));
+		navigate('/payment');
 	};
 
 	return (

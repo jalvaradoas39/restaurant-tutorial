@@ -7,6 +7,7 @@ import categoryReducer from './reducers/categoryReducers';
 import productReducer from './reducers/productReducers';
 import filterReducer from './reducers/filterReducers';
 import cartReducer from './reducers/cartReducers';
+import orderReducer from './reducers/orderReducers';
 
 const reducer = combineReducers({
 	loading: loadingReducer,
@@ -15,6 +16,7 @@ const reducer = combineReducers({
 	products: productReducer,
 	filters: filterReducer,
 	cart: cartReducer,
+	order: orderReducer,
 });
 
 const initialState = {};
