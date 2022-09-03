@@ -44,7 +44,7 @@ const Shipping = () => {
 	};
 
 	return (
-		<section>
+		<section className='m-4'>
 			<div className='jumbotron p-1'>
 				<h5>
 					<ProgressBar step1 />
