@@ -189,7 +189,14 @@ const Signup = () => {
 	 * RENDERER
 	 ***************************/
 	return (
-		<div className='signup-container'>
+		<div
+			className='signup-container'
+			style={{
+				backgroundImage: `url(${
+					process.env.PUBLIC_URL + '/images/img-signup-bkg.jpg'
+				})`,
+			}}
+		>
 			<div className='row px-3 vh-100'>
 				<div className='col-md-5 mx-auto align-self-center'>
 					{successMsg && showSuccessMsg(successMsg)}

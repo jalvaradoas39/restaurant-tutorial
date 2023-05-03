@@ -22,7 +22,14 @@ const Home = () => {
 
 	return (
 		<section className='home-page'>
-			<div className='banner-image'></div>
+			<div
+				className='banner-image'
+				style={{
+					backgroundImage: `url(${
+						process.env.PUBLIC_URL + '/images/banner.jpg'
+					})`,
+				}}
+			></div>
 			{loading ? (
 				<div className='text-center'>{showLoading()}</div>
 			) : (

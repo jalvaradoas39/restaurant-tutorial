@@ -1,4 +1,5 @@
 module.exports = {
-    jwtSecret: process.env.JWT_SECRET,
-    jwtExpire: process.env.JWT_EXPIRE,
+	jwtSecret: process.env.JWT_SECRET,
+	jwtExpire: process.env.JWT_EXPIRE,
+	stripeSecretKey: process.env.STRIPE_SECRET_KEY,
 };
