@@ -16,7 +16,7 @@ const Payment = () => {
 		if (paymentMethod) {
 			setPaymentType(paymentMethod);
 		}
-	}, [setPaymentType]);
+	}, [setPaymentType, paymentMethod]);
 
 	const handleChange = e => {
 		setPaymentType(e.target.value);
