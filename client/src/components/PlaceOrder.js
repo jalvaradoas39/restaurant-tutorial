@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProgressBar from './ProgressBar';
 import axios from 'axios';
 
 const PlaceOrder = () => {
+	const [clientSecret, setClientSecret] = useState('');
+
 	const calculateCartTotal = () => {
 		const cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -18,14 +20,17 @@ const PlaceOrder = () => {
 	const getPaymentIntent = async () => {
 		const cartTotal = calculateCartTotal();
 
-		await axios.post('/api/payment/payment-intent', {
+		const response = await axios.post('/api/payment/payment-intent', {
 			total: cartTotal,
 		});
+
+		setClientSecret(response.data.clientSecret);
 	};
 
 	useEffect(() => {
 		getPaymentIntent();
-	});
+		// eslint-disable-next-line
+	}, []);
 
 	return (
 		<section className='m-4'>
@@ -33,6 +38,7 @@ const PlaceOrder = () => {
 				<h5>
 					<ProgressBar step1 step2 />
 				</h5>
+				{JSON.stringify(clientSecret)}
 			</div>
 
 			<div className='container border border py-4'>
