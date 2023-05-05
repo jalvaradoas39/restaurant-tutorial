@@ -1,6 +1,7 @@
 import {
 	SAVE_SHIPPING_ADDRESS,
 	SAVE_PAYMENT_METHOD,
+	CLEAR_ORDER,
 } from '../constants/orderConstants';
 
 const INITIAL_STATE = {
@@ -27,6 +28,11 @@ const orderReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				paymentMethod: action.payload,
+			};
+		case CLEAR_ORDER:
+			return {
+				shippingAddress: {},
+				paymentMethod: '',
 			};
 		default:
 			return state;

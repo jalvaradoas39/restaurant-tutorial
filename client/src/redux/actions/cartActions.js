@@ -1,4 +1,8 @@
-import { ADD_TO_CART, DELETE_FROM_CART } from '../constants/cartConstants';
+import {
+	ADD_TO_CART,
+	DELETE_FROM_CART,
+	CLEAR_CART,
+} from '../constants/cartConstants';
 
 export const addToCart = product => async dispatch => {
 	// if cart already exists in local storage, use it, otherwise set to empty array
@@ -43,5 +47,11 @@ export const deleteFromCart = product => async dispatch => {
 	dispatch({
 		type: DELETE_FROM_CART,
 		payload: updatedCart,
+	});
+};
+
+export const clearCart = () => async dispatch => {
+	dispatch({
+		type: CLEAR_CART,
 	});
 };
