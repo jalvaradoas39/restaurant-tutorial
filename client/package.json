@@ -15,6 +15,7 @@
 		"react-router-dom": "^6.11.0",
 		"react-scripts": "^5.0.1",
 		"redux": "^4.2.1",
+		"redux-thunk": "^2.4.2",
 		"validator": "^13.9.0"
 	},
 	"scripts": {
@@ -42,6 +43,7 @@
 	},
 	"proxy": "http://localhost:5000",
 	"devDependencies": {
-		"@testing-library/react": "^14.0.0"
+		"@testing-library/react": "^14.0.0",
+		"redux-devtools-extension": "^2.13.9"
 	}
 }
