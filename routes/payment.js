@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const paymentController = require('../controllers/payment');
-const { authenticateJWT } = require('../middleware/authenticator');
+//const { authenticateJWT } = require('../middleware/authenticator');
 
 router.post(
 	'/payment-intent',
-	authenticateJWT,
+	//authenticateJWT,
 	paymentController.create_payment_intent
 );
 

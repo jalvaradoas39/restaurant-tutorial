@@ -15,7 +15,7 @@ const Signin = () => {
 		if (isAuthenticated() && isAuthenticated().role === 1) {
 			navigate('/admin/dashboard');
 		} else if (isAuthenticated() && isAuthenticated().role === 0) {
-			navigate('/user/dashboard');
+			navigate('/');
 		}
 	}, [navigate]);
 
@@ -73,7 +73,7 @@ const Signin = () => {
 						!redirect
 					) {
 						console.log('Redirecting to user dashboard');
-						navigate('/user/dashboard');
+						navigate('/');
 					} else {
 						console.log('Redirecting to shipping');
 						navigate('/shipping');

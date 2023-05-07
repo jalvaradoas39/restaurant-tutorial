@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// FOR PRODUCTION
+// import { useNavigate } from 'react-router-dom';
 import {
 	useStripe,
 	useElements,
@@ -7,7 +8,8 @@ import {
 } from '@stripe/react-stripe-js';
 
 const CheckoutForm = () => {
-	const navigate = useNavigate();
+	// FOR PRODUCTION
+	// const navigate = useNavigate();
 
 	const stripe = useStripe();
 	const elements = useElements();
@@ -15,26 +17,27 @@ const CheckoutForm = () => {
 	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async event => {
-		// We don't want to let default form submission happen here,
-		// which would refresh the page.
 		event.preventDefault();
 
+		// FOR DEVELOPMENT
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 4000);
+
+		/* FOR PRODUCTION
 		if (!stripe || !elements) {
-			// Stripe.js hasn't yet loaded.
-			// Make sure to disable form submission until Stripe.js has loaded.
 			return;
 		}
 
 		setLoading(true);
 		const result = await stripe.confirmPayment({
-			//`Elements` instance that was used to create the Payment Element
 			elements,
 			redirect: 'if_required',
 		});
 		setLoading(false);
 
 		if (result.error) {
-			// Show error to your customer (for example, payment details incomplete)
 			console.log(result.error.message);
 		} else {
 			navigate('/', {
@@ -43,6 +46,7 @@ const CheckoutForm = () => {
 				},
 			});
 		}
+		*/
 	};
 
 	return (
