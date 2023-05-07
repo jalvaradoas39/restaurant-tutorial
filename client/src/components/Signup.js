@@ -15,7 +15,7 @@ const Signup = () => {
 		if (isAuthenticated() && isAuthenticated().role === 1) {
 			navigate('/admin/dashboard');
 		} else if (isAuthenticated() && isAuthenticated().role === 0) {
-			navigate('/user/dashboard');
+			navigate('/');
 		}
 	}, [navigate]);
 
