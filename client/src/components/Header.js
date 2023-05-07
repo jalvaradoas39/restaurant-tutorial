@@ -79,12 +79,12 @@ const Header = () => {
 
 					{isAuthenticated() && isAuthenticated().role === 0 && (
 						<Fragment>
-							<li className='nav-item'>
+							{/* <li className='nav-item'>
 								<Link to='/user/dashboard' className='nav-link'>
 									<i className='fas fa-user-cog'></i>{' '}
 									Dashboard
 								</Link>
-							</li>
+							</li> */}
 							<li className='nav-item'>
 								<Link to='/' className='nav-link'>
 									<i className='fas fa-home'></i> Home
