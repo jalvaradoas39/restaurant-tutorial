@@ -38,7 +38,7 @@ const Product = () => {
 					<div className='col-md-6'>
 						<img
 							className='img-fluid w-100 mb-4'
-							src={`/uploads/${product.fileName}`}
+							src={`${process.env.REACT_APP_SERVER_URL}/uploads/${product.fileName}`}
 							alt='product'
 						/>
 					</div>

@@ -18,7 +18,7 @@ const Card = ({ product, adminPage = false, homePage = false }) => {
 				<a href='#!'>
 					<img
 						className='img-fluid w-100'
-						src={`/uploads/${product.fileName}`}
+						src={`${process.env.REACT_APP_SERVER_URL}/uploads/${product.fileName}`}
 						alt='product'
 					/>
 				</a>

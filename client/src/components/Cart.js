@@ -83,7 +83,7 @@ const Cart = ({ history }) => {
 														maxWidth: '110px',
 													}}
 													className='img-fluid w-100 img-thumbnail'
-													src={`/uploads/${product.fileName}`}
+													src={`${process.env.REACT_APP_SERVER_URL}/uploads/${product.fileName}`}
 													alt='product'
 												/>
 											</th>

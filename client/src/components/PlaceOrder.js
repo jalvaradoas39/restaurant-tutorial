@@ -25,9 +25,12 @@ const PlaceOrder = () => {
 	const getPaymentIntent = async () => {
 		const cartTotal = calculateCartTotal();
 
-		const response = await axios.post('/api/payment/payment-intent', {
-			total: cartTotal,
-		});
+		const response = await axios.post(
+			`${process.env.REACT_APP_SERVER_URL}/api/payment/payment-intent`,
+			{
+				total: cartTotal,
+			}
+		);
 
 		setClientSecret(response.data.clientSecret);
 	};

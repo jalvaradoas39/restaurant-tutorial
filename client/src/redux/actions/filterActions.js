@@ -10,7 +10,7 @@ export const getNewArrivals =
 		try {
 			dispatch({ type: START_LOADING });
 			const response = await axios.get(
-				`/api/filter?sortBy=${sortBy}&limit=${limit}`
+				`${process.env.REACT_APP_SERVER_URL}/api/filter?sortBy=${sortBy}&limit=${limit}`
 			);
 			dispatch({ type: STOP_LOADING });
 			dispatch({
@@ -29,7 +29,10 @@ export const getNewArrivals =
 
 export const getProductsByFilter = arg => async dispatch => {
 	try {
-		const response = await axios.post('/api/filter/search', arg);
+		const response = await axios.post(
+			`${process.env.REACT_APP_SERVER_URL}/api/filter/search`,
+			arg
+		);
 
 		dispatch({
 			type: GET_PRODUCTS,

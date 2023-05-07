@@ -14,7 +14,10 @@ import {
 export const createProduct = formData => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.post('/api/product', formData);
+		const response = await axios.post(
+			`${process.env.REACT_APP_SERVER_URL}/api/product`,
+			formData
+		);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: SHOW_SUCCESS_MESSAGE,
@@ -37,7 +40,9 @@ export const createProduct = formData => async dispatch => {
 export const getProducts = () => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.get('/api/product');
+		const response = await axios.get(
+			`${process.env.REACT_APP_SERVER_URL}/api/product`
+		);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: GET_PRODUCTS,
@@ -56,7 +61,9 @@ export const getProducts = () => async dispatch => {
 export const getProductsByCount = () => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.get('/api/product/count');
+		const response = await axios.get(
+			`${process.env.REACT_APP_SERVER_URL}/api/product/count`
+		);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: GET_PRODUCTS,
@@ -75,7 +82,9 @@ export const getProductsByCount = () => async dispatch => {
 export const getProduct = productId => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.get(`/api/product/${productId}`);
+		const response = await axios.get(
+			`${process.env.REACT_APP_SERVER_URL}/api/product/${productId}`
+		);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: GET_PRODUCT,
@@ -94,7 +103,9 @@ export const getProduct = productId => async dispatch => {
 export const deleteProduct = productId => async dispatch => {
 	try {
 		dispatch({ type: START_LOADING });
-		const response = await axios.delete(`/api/product/${productId}`);
+		const response = await axios.delete(
+			`${process.env.REACT_APP_SERVER_URL}/api/product/${productId}`
+		);
 		dispatch({ type: STOP_LOADING });
 		dispatch({
 			type: DELETE_PRODUCT,

@@ -73,7 +73,11 @@ const AdminEditProduct = () => {
 		};
 
 		await axios
-			.put(`/api/product/${productId}`, formData, config)
+			.put(
+				`${process.env.REACT_APP_SERVER_URL}/api/product/${productId}`,
+				formData,
+				config
+			)
 			.then(res => {
 				navigate('/admin/dashboard');
 			})
@@ -127,7 +131,7 @@ const AdminEditProduct = () => {
 														width: '120px',
 														height: '80px',
 													}}
-													src={`/uploads/${productImage}`}
+													src={`${process.env.REACT_APP_SERVER_URL}/uploads/${productImage}`}
 													alt='product'
 												/>
 											) : null}

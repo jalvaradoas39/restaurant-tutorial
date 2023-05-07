@@ -41,7 +41,6 @@
 			"not op_mini all"
 		]
 	},
-	"proxy": "http://localhost:5000",
 	"devDependencies": {
 		"@testing-library/react": "^14.0.0",
 		"redux-devtools-extension": "^2.13.9"
