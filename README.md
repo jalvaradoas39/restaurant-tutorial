@@ -17,14 +17,14 @@ You can watch the full tutorial series on [YouTube](https://www.youtube.com/@Web
 
 ## About the Project
 
-This project was created as a result of my passion for teaching and helping others what I learned. I have learned so much from instructors on platforms like YouTube, so it feels rewarding to return the favor to the community in the best way possible. The tutorial series on [YouTube](https://www.youtube.com/@WebStoreMaker) guides viewers step-by-step through building an application with features like:
+This project was created as a result of my passion for teaching others what I've learned. I have learned so much from instructors on platforms like YouTube, so it feels rewarding to return the favor to the community in the best way possible. The tutorial series on [YouTube](https://www.youtube.com/@WebStoreMaker) guides viewers step-by-step through building an application with features like:
 
 - Search filters.
 - Shopping cart functionality.
 - Payment gateway integration using **Stripe**.
 - Admin dashboard functionality for managing products and inventory.
 
-The focus of the series was on **functionality** rather than UI design, as I wanted to ensure the tutorials remained accessible and didn't overextend in time. The tutorials emphasize practical skills and real-world problem-solving to help aspiring developers learn and grow.
+The focus of the series was on **functionality** rather than UI design, as I wanted to ensure the tutorial series didn't overextend in time. The tutorials emphasize practical skills and real-world problem-solving to help aspiring developers learn and grow.
 
 ---
 
